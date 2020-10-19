@@ -34,7 +34,7 @@ public class JSON {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
+			json = json(url);
 		}
 		return json;
 	}
