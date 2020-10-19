@@ -1,0 +1,164 @@
+{
+    "join_message": "Obrigado por me adicionar no seu querido servidor! Os seguintes comandos são **muito úteis**:\n \n**• mt.idioma <en-us/pt-br>** | Trocar idioma do bot\n**• mt.timezone <-12 to 12>** | Fuso horário\n**• mt.spoiler <ativar/desativar>** | Ative para esconder pontuação dos times\n \nVeja mais comandos usando **mt.ajuda**\nBugs, sugestões, ajudas em **server discord**: <https://cutt.ly/zybNwPh>\nVote no bot em <https://top.gg/bot/694992068589912084/vote>\nDoe em <https://donatebot.io/checkout/701168663629267005>\n \nDivirta-se!",
+	"more_permissions": "> Ah não! Preciso de mais permissões para recursos interessantes. Você pode me convidar novamente? Use este link de convite: {INVITE}",
+	"only_admin": ":x: | {USER}, apenas administradores podem executar esse comando!",
+	"matches_usage": "Use: **!mt.csgo/lol/dota2/codmw/pubg/ow/rl/r6/fifa**",
+	"help_embed_author": "Matcher - Comandos",
+	"help_embed_description": "**Jogos:** csgo/lol/dota2/codmw/pubg/ow/rl/r6/fifa",
+	"help_embed_fields": [
+		{
+			"title": "mt.ajuda",
+			"description": "` Comando de ajuda `",
+			"inline": false
+		},
+		{
+			"title": "mt.csgo/lol/dota2/codmw/pubg/ow/rl/r6/fifa",
+			"description": "` Ver partidas profissionais por jogo (mt.game)`",
+			"inline": false
+		},
+		{
+			"title": "mt.idioma <en-us/pt-br>",
+			"description": "` Trocar idioma das mensagens `",
+			"inline": false
+		},
+		{
+			"title": "mt.timezone <-12 a 12>",
+			"description": "` Trocar fuso horário (-12 a 12) `",
+			"inline": false
+		},
+		{
+			"title": "mt.spoiler <ativar/desativar>",
+			"description": "` Ative para esconder pontuações dos times `",
+			"inline": false
+		},
+		{
+			"title": "mt.notificar info",
+			"description": "` Ver informações sobre as notificações `",
+			"inline": false
+		},
+		{
+			"title": "mt.notificar canal",
+			"description": "` Alterar canal de texto para o atual `",
+			"inline": false
+		},
+		{
+			"title": "mt.notificar add jogo <jogo>",
+			"description": "` Adicionar notificações para um jogo `",
+			"inline": false
+		},
+		{
+			"title": "mt.notificar add time <jogo> <time>",
+			"description": "` Adicionar notificações para um time em um jogo `",
+			"inline": false
+		},
+		{
+			"title": "mt.notificar remover jogo <jogo>",
+			"description": "` Remover notificações de um jogo `",
+			"inline": false
+		},
+		{
+			"title": "mt.notificar remover time <jogo> <time>",
+			"description": "` Remover notificações de um time em um jogo `",
+			"inline": false
+		},
+		{
+			"title": "",
+			"description": "[Convide-me]({INVITE}) | [Vote]({VOTE}) | [Servidor do Discord]({DISCORD}) | [Doação]({DONATE})",
+			"inline": false
+		}
+	],
+	"info_embed_author": "Matcher - Informações",
+	"info_embed_fields": [
+		{
+			"title": "Usuários",
+			"description": "` {USERS} `",
+			"inline": true
+		},
+		{
+			"title": "Guildas",
+			"description": "` {GUILDS} `",
+			"inline": true
+		},
+		{
+			"title": "Canais",
+			"description": "` {CHANNELS} `",
+			"inline": true
+		},
+		{
+			"title": "Tempo de Atividade",
+			"description": "` {UPTIME} `",
+			"inline": true
+		},
+		{
+			"title": "Biblioteca",
+			"description": "` {JDAVERSION} `",
+			"inline": true
+		},
+		{
+			"title": "Ping",
+			"description": "` {PING} `",
+			"inline": true
+		},
+		{
+			"title": "Desenvolvedor",
+			"description": "` {DEV} `",
+			"inline": true
+		},
+		{
+			"title": "Uso de CPU",
+			"description": "` {CPU} `",
+			"inline": true
+		},
+		{
+			"title": "Uso de RAM",
+			"description": "` {RAM} `",
+			"inline": true
+		},
+		{
+			"title": "",
+			"description": "[Convide-me]({INVITE}) | [Vote]({VOTE}) | [Servidor do Discord]({DISCORD}) | [Doação]({DONATE})",
+			"inline": false
+		}
+	],
+	"notify_not_active": ":x: | {USER}, nenhuma notificação está ativa nesta guilda!",
+	"notify_none": "• Nenhum",
+	"notify_info_message": "{USER} | Notificações ativadas:\n \n**Canal de Texto**: {CHANNEL}\n \n**Jogos** ({GAMES}/{GAMESTOTAL})\n{GAMESSTRING}\n **Times** ({TEAMS}/20)\n{TEAMSSTRING}\nNão distingue entre minúsculas e maiúsculas",
+	"notify_channel_changed": ":white_check_mark: | {USER} | Canal de texto alterado para {CHANNEL}",
+	"notify_game_unsupported": ":x: | {USER} | Eu não tenho suporte ao jogo **{GAME}**. \nJogos suportados: CSGO - LOL - DOTA2 - RL - R6 - OW - PUBG - CODMW",
+	"notify_game_added": ":white_check_mark: | {USER} | Será notificado neste canal quando uma partida do jogo **{GAME}** começar, finalizar ou ser alterada!",
+	"notify_game_added_again": ":x: | {USER} | Já está sendo notificado de partidas do jogo **{GAME}** nesta guilda!",
+	"notify_team_limit": ":x: | {USER} | O limite de times registrados chegou ao máximo! ({LIMIT})",
+	"notify_team_added": ":white_check_mark: | {USER} | Será notificado neste canal quando uma partida do time **{TEAM}** no jogo **{GAME}** começar, finalizar ou ser alterada!",
+	"notify_team_added_again": ":x: | {USER} | Já está sendo notificado de partidas do time **{TEAM}** no jogo **{GAME}** nesta guilda!",
+	"notify_game_removed": ":white_check_mark: | {USER} | Notificações de partidas do jogo **{GAME}** foram **desativadas** nesta guilda!",
+	"notify_game_removed_none": ":x: | {USER} | Não há notificações para o jogo **{GAME}** ativas nesta guilda!",
+	"notify_team_removed": ":white_check_mark: | {USER} | Notificações de partidas do time **{TEAM}** no jogo **{GAME}** foram **desativadas** nesta guilda!",
+	"notify_team_removed_none": ":x: | {USER} | Não há notificações de partidas para o time **{TEAM}** no jogo **{GAME}** ativas nesta guilda!",
+	"notify_usage": "{USER} | Use: \n• mt.notificar info\n• mt.notificar canal\n• mt.notificar adicionar jogo <jogo>\n• mt.notificar remover jogo <jogo>\n• mt.notificar adicionar time <jogo> <time>\n• mt.notificar remover time <jogo> <time>",
+	"match_bo": "MD",
+	"match_status_points": "{GAMES} | Pontos atualizados",
+	"match_status_ingame": "{GAMES} | Começando agora",
+	"match_status_canceled": "{GAMES} | Cancelado",
+	"match_status_finished": "{GAMES} | Finalizado",
+	"reaction_description": "Lista de partidas profissionais",
+	"matches_embed_footer": "{GAME} - Página ({PAGE}/{MAXPAGE}) - Fuso horário {TIMEZONE}",
+	"matches_embed_nogames": "Sem jogos registrados!",
+	"matches_embed_legend": ":green_square:` Finalizado `   :red_square:` Ao vivo `   :white_large_square:` Aguardando `    :orange_square:` Cancelado `",
+	"matches_watch": "Assistir",
+	"matches_live": "AO VIVO",
+	"lang_unsupported": ":x: | {USER} | Não tenho suporte para o idioma **{LANG}**! Idiomas suportados: {LANGUAGES}",
+	"lang_equals": ":x: | {USER} | O idioma atual já está definido como **{LANG}**!",
+	"lang_changed": ":white_check_mark: | {USER} | O idioma da guilda foi alterada para **{NEWLANG}**!",
+	"lang_usage": ":x: | {USER} | Use: mt.lang <pt-br/en-us>",
+	"not_number": ":x: | {USER} | {ARG} não é um número válido! Use um **número** de **-12 a 12**",
+	"tz_equals": ":x: | {USER} | O fuso horário atual já está definido para **{TIMEZONE}**!",
+	"tz_changed": ":white_check_mark: | {USER} | O fuso horário da guilda foi alterado para **{NEWTIMEZONE}**!",
+	"tz_usage": ":x: | {USER} | Use: mt.timezone <-12 a 12>",
+	"spoiler_not_valid": ":x: | {USER} | {ARG} não é válido! Use **ativar** ou **desativar**",
+	"spoiler_equals_enabled": ":x: | {USER} | As pontuações já estáo sendo **escondidas!",
+	"spoiler_equals_disabled": ":x: | {USER} | As pontuações já estáo sendo **mostradas**!",
+	"spoiler_enabled": ":white_check_mark: | {USER} | As pontuações das partidas serão **escondidas**!",
+	"spoiler_disabled": ":white_check_mark: | {USER} | As pontuações das partidas serão **mostradas**!",
+	"spoiler_usage": ":x: | {USER} | Use: mt.spoiler <ativar/desativar>"
+
+}
