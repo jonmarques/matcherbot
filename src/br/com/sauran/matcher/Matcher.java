@@ -89,6 +89,8 @@ public class Matcher {
 			if (gi == null) new GuildInfo(guild, null, null, null, null, 0, false);
 		}
 
+		System.out.println("teste");
+		
 		if (!config.isTest()) {
 
 			Timer timer = new Timer();
