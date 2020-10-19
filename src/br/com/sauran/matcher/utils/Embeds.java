@@ -101,18 +101,22 @@ public class Embeds {
 
 			Calendar dateNow = Calendar.getInstance();
 			dateNow.setTimeInMillis(match.getBegin_at());
-			dateNow.setTimeZone(gi.getTimeZone());
+			
+			SimpleDateFormat format2 = new SimpleDateFormat("dd';'MM';'yyyy");
 			SimpleDateFormat format = new SimpleDateFormat("HH:mm");
 			SimpleDateFormat formatdate = null;
+			
 			if (LangManager.getLang("pt-br") == gi.getLang()) {
 				formatdate = new SimpleDateFormat("EEEEE, d 'de' MMMMM 'de' yyyy",  new Locale("pt", "BR"));
 			} else {
 				formatdate = new SimpleDateFormat("EEEEE, MMMMM d, yyyy",  new Locale("en", "US"));
 			}
+			
+			format2.setTimeZone(gi.getTimeZone());
 			format.setTimeZone(gi.getTimeZone());
 			formatdate.setTimeZone(gi.getTimeZone());
 
-			String date = dateNow.get(Calendar.DAY_OF_MONTH) + ";" + dateNow.get(Calendar.MONTH) + ";" + dateNow.get(Calendar.YEAR);
+			String date = format2.format(dateNow.getTime());
 			if (!lastday.equalsIgnoreCase(date)) {
 				embed.addField(" ", ":calendar_spiral: " + formatdate.format(dateNow.getTime()), false);
 				lastday = date;

@@ -51,7 +51,7 @@ public class Match {
 			if (image2 != null && !image2.isEmpty() && !image2.equals(match.getImage2())) match.setImage2(image2);
 			if (liveUrl != null && !liveUrl.isEmpty() && !liveUrl.equals(match.getLiveUrl())) match.setLiveUrl(liveUrl);
 			if (match.getBegin_at() != begin_at) match.setBegin_at(begin_at);
-			if ( match.getEnded_at() != ended_at) match.setBegin_at(ended_at);
+			if (match.getEnded_at() != ended_at) match.setEnded_at(ended_at);
 
 			if (match.getPoints1() != points1) {
 				match.setPoints1(points1);

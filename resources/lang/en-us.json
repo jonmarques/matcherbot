@@ -1,5 +1,5 @@
 {
-    "join_message": "Thank you for adding me to your dear server! The following commands are **very useful**:\n \n• **mt.language <en-us/pt-br>** | Change bot language\n• **mt.timezone <-12 to 12>** | TimeZone offset\n**• mt.spoiler <on/off>** | Enable to hide team scores\n \nSee more commands using **mt.help**\nBugs, suggestions, help and donates on **server discord**: <https://cutt.ly/zybNwPh>\nVote in <https://top.gg/bot/694992068589912084/vote>\nDonate in <https://donatebot.io/checkout/701168663629267005>\n \nHave a good time!",
+    "join_message": "Thank you for adding me to your dear server! The following commands are **very useful**:\n \nâ€¢ **mt.language <en-us/pt-br>** | Change bot language\nâ€¢ **mt.timezone <-12 to 12>** | TimeZone offset\n**â€¢ mt.spoiler <on/off>** | Enable to hide team scores\n \nSee more commands using **mt.help**\n \nBugs, suggestions, help and donates on **server discord**: <https://cutt.ly/zybNwPh>\nVote in <https://top.gg/bot/694992068589912084/vote>\nDonate in <https://donatebot.io/checkout/701168663629267005>\n \nHave a good time!",
 	"more_permissions": "> Oh no! I need more permissions for cool features, can you please invite-me again? Use this invite link: <https://cutt.ly/zybNwPh> {INVITE}",
 	"only_admin": ":x: | {USER}, only administrators can run this command!",
 	"matches_usage": "Use: **!mt.csgo/lol/dota2/codmw/pubg/ow/rl/r6/fifa**",
@@ -121,7 +121,7 @@
 		}
 	],
 	"notify_not_active": ":x: | {USER}, no notification is active in this guild!",
-	"notify_none": "• None",
+	"notify_none": "ï¿½ None",
 	"notify_info_message": "{USER} | Notifications enabled:\n \n**Text channel**: {CHANNEL}\n \n**Games** ({GAMES}/{GAMESTOTAL})\n{GAMESSTRING}\n **Teams** ({TEAMS}/20)\n{TEAMSSTRING}\nDoes not distinguish between lowercase and uppercase letters",
 	"notify_channel_changed": ":white_check_mark: | {USER} | Text channel changed to {CHANNEL}",
 	"notify_game_unsupported": ":x: | {USER} | I don't have support for the game **{GAME}**. \nSupported games: CSGO - LOL - DOTA2 - RL - R6 - OW - PUBG - CODMW",
@@ -134,7 +134,7 @@
 	"notify_game_removed_none": ":x: | {USER} | There are no active **{GAME}** game notifications in this guild!",
 	"notify_team_removed": ":white_check_mark: | {USER} | Notifications for **{TEAM}** team matches in the **{GAME}** game have been **disabled** on this guild!",
 	"notify_team_removed_none": ":x: | {USER} | There are no match notifications for the **{TEAM}** team in the **{GAME}** game active in this guild!",
-	"notify_usage": "{USER} | Use: \n• mt.notify info\n• mt.notify channel\n• mt.notify add game <game>\n• mt.notifiy remove game <game>\n• mt.notify add team <game> <team>\n• mt.notify remove team <game> <team>",
+	"notify_usage": "{USER} | Use: \nï¿½ mt.notify info\nï¿½ mt.notify channel\nï¿½ mt.notify add game <game>\nï¿½ mt.notifiy remove game <game>\nï¿½ mt.notify add team <game> <team>\nï¿½ mt.notify remove team <game> <team>",
 	"match_bo": "BO",
 	"match_status_points": "{GAMES} | Points Updated",
 	"match_status_ingame": "{GAMES} | Starting now",

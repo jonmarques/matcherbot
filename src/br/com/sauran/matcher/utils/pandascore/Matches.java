@@ -32,6 +32,7 @@ public class Matches {
 					Match.resetMatches();
 					System.out.println("Partidas reiniciadas!");
 				}
+				
 				getMatches();	
 			}
 		};
