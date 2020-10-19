@@ -88,8 +88,6 @@ public class Matcher {
 			GuildInfo gi = GuildInfo.getGuildInfo(guild);
 			if (gi == null) new GuildInfo(guild, null, null, null, null, 0, false);
 		}
-
-		System.out.println("teste");
 		
 		if (!config.isTest()) {
 
