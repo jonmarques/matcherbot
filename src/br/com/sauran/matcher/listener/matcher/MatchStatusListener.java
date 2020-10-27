@@ -45,10 +45,10 @@ public class MatchStatusListener extends ListenerAdapter {
 		Game game = e.getMatch().getGame();
 
 		String tournament = match.getLeagueName() + " " + match.getSerieName();
-		String flag1 = match.getLocation1() == null ? ":pirate_flag:" : ":flag_" + match.getLocation1() + ":";
-		String flag2 = match.getLocation2() == null ? ":pirate_flag:" : ":flag_" + match.getLocation2() + ":";
-		String name1 = match.getName1();
-		String name2 = match.getName2();
+		String flag1 = match.getTime1().getLocation() == null ? ":pirate_flag:" : ":flag_" + match.getTime1().getLocation() + ":";
+		String flag2 = match.getTime2().getLocation() == null ? ":pirate_flag:" : ":flag_" + match.getTime2().getLocation() + ":";
+		String name1 = match.getTime1().getName();
+		String name2 = match.getTime2().getName();
 		String points1 = String.valueOf(match.getPoints1());
 		String points2 = String.valueOf(match.getPoints2());
 		String liveurl = match.getLiveUrl() == null || match.getLiveUrl().equals("") ? null : match.getLiveUrl();
@@ -101,12 +101,12 @@ public class MatchStatusListener extends ListenerAdapter {
 				fm = g2d.getFontMetrics();
 
 				try {
-					if (match.getImage1() != null) {
-						g2d.drawImage(ImageIO.read(new URL(match.getImage1())), 100, 125, 250, 250, null);
+					if (match.getTime1().getImage() != null) {
+						g2d.drawImage(ImageIO.read(new URL(match.getTime1().getImage())), 100, 125, 250, 250, null);
 
 					} else g2d.drawImage(ImageIO.read(Matcher.class.getResourceAsStream("/images/default.png")), 100, 125, 250, 250, null);
-					if (match.getImage2() != null) {
-						g2d.drawImage(ImageIO.read(new URL(match.getImage2())), 675, 125, 250, 250, null);
+					if (match.getTime2().getImage() != null) {
+						g2d.drawImage(ImageIO.read(new URL(match.getTime2().getImage())), 675, 125, 250, 250, null);
 					} else g2d.drawImage(ImageIO.read(Matcher.class.getResourceAsStream("/images/default.png")), 675, 125, 250, 250, null);
 				} catch (IOException e3) {
 					e3.printStackTrace();
@@ -138,19 +138,21 @@ public class MatchStatusListener extends ListenerAdapter {
 
 		for (Entry<Guild, GuildInfo> guilds : GuildInfo.getGuilds().entrySet()) {
 
+			GuildInfo gi = guilds.getValue();
+			
+			if (gi.getTextChannel() == null) continue;
+			
 			EmbedBuilder eb = new EmbedBuilder();
 
 			String author = "";
 			String description = "";
 
-			GuildInfo gi= guilds.getValue();
-
-			if (gi.getGamesTeams().stream().anyMatch((game.name() + ";" + match.getName1())::equalsIgnoreCase)) {
-				if (match.getImage1() == null || match.getImage1().isEmpty()) eb.setThumbnail(game.getLogo());
-				else eb.setThumbnail(match.getImage1());
-			} else if (gi.getGamesTeams().stream().anyMatch((game.name() + ";" + match.getName2())::equalsIgnoreCase)) {
-				if (match.getImage2() == null || match.getImage2().isEmpty()) eb.setThumbnail(game.getLogo());
-				else eb.setThumbnail(match.getImage2());
+			if (gi.getGamesTeams().stream().anyMatch((game.name() + ";" + match.getTime1().getName())::equalsIgnoreCase)) {
+				if (match.getTime1().getImage() == null || match.getTime1().getImage().isEmpty()) eb.setThumbnail(game.getLogo());
+				else eb.setThumbnail(match.getTime1().getImage());
+			} else if (gi.getGamesTeams().stream().anyMatch((game.name() + ";" + match.getTime2().getName())::equalsIgnoreCase)) {
+				if (match.getTime2().getImage() == null || match.getTime2().getImage().isEmpty()) eb.setThumbnail(game.getLogo());
+				else eb.setThumbnail(match.getTime2().getImage());
 			} else if (gi.getGames().contains(match.getGame())) {
 				eb.setThumbnail(game.getLogo());
 			} else continue;

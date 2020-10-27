@@ -49,7 +49,6 @@ public class Matcher {
 		AsyncInfoMonitor.start();
 
 		eh = new EventHandler();
-		eh.addListener(new MatchStatusListener());	
 
 		config = new Config();
 		new Matches();
@@ -91,6 +90,8 @@ public class Matcher {
 		
 		if (!config.isTest()) {
 
+			eh.addListener(new MatchStatusListener());	
+			
 			Timer timer = new Timer();
 			TimerTask task = new TimerTask() {
 

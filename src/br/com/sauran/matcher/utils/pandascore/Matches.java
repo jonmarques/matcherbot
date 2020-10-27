@@ -1,7 +1,12 @@
 package br.com.sauran.matcher.utils.pandascore;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
+
 import java.util.TimeZone;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -10,6 +15,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import br.com.sauran.matcher.entities.Match;
+import br.com.sauran.matcher.entities.Player;
+import br.com.sauran.matcher.entities.Team;
 import br.com.sauran.matcher.entities.enums.Game;
 import br.com.sauran.matcher.entities.enums.MatchStatus;
 import br.com.sauran.matcher.utils.JSON;
@@ -25,14 +32,14 @@ public class Matches {
 
 			@Override
 			public void run() {
-				
+
 				dateNow.setTimeInMillis(System.currentTimeMillis());
-				
+
 				if (dateNow.get(Calendar.HOUR_OF_DAY) == 0 && dateNow.get(Calendar.MINUTE) == 0) {
 					Match.resetMatches();
 					System.out.println("Partidas reiniciadas!");
 				}
-				
+
 				getMatches();	
 			}
 		};
@@ -40,7 +47,7 @@ public class Matches {
 		timer.scheduleAtFixedRate(task, 0, 60 * 1000);
 	}
 
-	protected static void getMatches() {
+	protected void getMatches() {
 
 		long millis = System.currentTimeMillis();
 
@@ -53,6 +60,8 @@ public class Matches {
 		dateNextDay.add(Calendar.DATE, 1);
 
 		SimpleDateFormat formatterJson = new SimpleDateFormat("yyyy-MM-dd");
+
+		HashMap<Game, List<Team>> update = new HashMap<>();
 
 		for (Game jogo : Game.values()) {
 
@@ -72,10 +81,7 @@ public class Matches {
 					int id = match.getInt("id");
 					long begin_at = convertTime(match.getString("scheduled_at"));
 					long ended_at = match.isNull("end_at") ? 0 : convertTime(match.getString("end_at"));
-
-					String name1 = "TBA", name2 = "TBA";
-					String image1 = null, image2 = null;
-					String location1 = null, location2 = null;
+					Team team1 = null, team2 = null;
 					short points1 = 0, points2 = 0;
 					MatchStatus status = MatchStatus.getByName(match.getString("status"));
 					short numbergames = (short) match.getInt("number_of_games");
@@ -88,14 +94,44 @@ public class Matches {
 						JSONObject opponent = opponents.getJSONObject(i2);
 						JSONObject opponentinfo = opponent.getJSONObject("opponent");
 
-						if (i2 == 0) {
-							name1 = opponentinfo.isNull("name") ? name1 : opponentinfo.getString("name");
-							location1 = opponentinfo.isNull("location") ? null : opponentinfo.getString("location").toLowerCase();
-							image1 = opponentinfo.isNull("image_url") ? null : opponentinfo.getString("image_url");
-						} else if (i2 == 1) {
-							name2 = opponentinfo.isNull("name") ? name2 : opponentinfo.getString("name");
-							location2 = opponentinfo.isNull("location") ? null : opponentinfo.getString("location").toLowerCase();
-							image2 = opponentinfo.isNull("image_url") ? null : opponentinfo.getString("image_url");
+						int teamid = opponentinfo.getInt("id");
+
+						String tag = opponentinfo.isNull("acronym") ? null : opponentinfo.getString("acronym");
+						String name = opponentinfo.isNull("name") ? "TBA" : opponentinfo.getString("name");
+						String location = opponentinfo.isNull("location") ? null : opponentinfo.getString("location").toLowerCase();
+						String image = opponentinfo.isNull("image_url") ? null : opponentinfo.getString("image_url");
+						long modified = convertTime(opponentinfo.getString("modified_at"));
+
+						Team team = Team.getTime(teamid);
+						if (team != null) {
+
+							if (team.getModified() < convertTime(opponentinfo.getString("modified_at"))) {
+								if (update.containsKey(jogo)) {
+									update.get(jogo).add(team);
+								} else {
+									List<Team> teams = new ArrayList<>();
+									teams.add(team);
+									update.put(jogo, teams);
+								}
+							}
+
+							if (i2 == 0) team1 = team;
+							else if (i2 == 1) team2 = team;
+
+						} else {
+
+							team = new Team(teamid, tag, jogo, name, image, location, modified, null);
+
+							if (update.containsKey(jogo)) {
+								update.get(jogo).add(team);
+							} else {
+								List<Team> teams = new ArrayList<>();
+								teams.add(team);
+								update.put(jogo, teams);
+							}							
+
+							if (i2 == 0) team1 = team;
+							else if (i2 == 1) team2 = team;
 						}
 
 					}
@@ -111,7 +147,53 @@ public class Matches {
 
 					}
 
-					Match.createOrUpdateMatch(jogo, id, begin_at, ended_at, name1, name2, image1, image2, location1, location2, points1, points2, status, numbergames, leagueName, serieName, liveurl);
+					Match.createOrUpdateMatch(jogo, id, begin_at, ended_at, team1, team2, points1, points2, status, numbergames, leagueName, serieName, liveurl);
+				}
+			}
+
+		}
+
+		if (!update.isEmpty()) {
+			for (Entry<Game, List<Team>> game : update.entrySet()) {
+
+				StringBuilder sb = new StringBuilder();
+				for (Team team : game.getValue()) {
+					sb.append(team.getId() + ",");
+				}
+				sb.delete(sb.length() - 1, sb.length());
+
+				String jsonString = JSON.json("https://api.pandascore.co/teams?token=_8uyH4WssbAoaBOUbY1VxBa6fdzHh2J80TAa8z5OhqHUF6ivNyQ&per_page=100&filter[id]=" + sb.toString());
+
+				if (jsonString != null) {
+
+					JSONArray json = new JSONArray(jsonString);
+
+					for (int i = 0; i < json.length(); i++) {
+
+						JSONObject t = json.getJSONObject(i);
+
+						int id = t.getInt("id");
+
+						List<Player> players = new ArrayList<>();
+						JSONArray p = t.getJSONArray("players");
+
+						Team team = Team.getTime(id);
+
+						for (int i2 = 0; i2 < p.length(); i2++) {
+
+							JSONObject player = p.getJSONObject(i2);
+
+							String slug = player.isNull("name") ? null : player.getString("name");
+							String nationality = player.isNull("nationality") ? null : player.getString("nationality");
+							String firstname = player.isNull("first_name") ? null : player.getString("first_name");
+							String lastname = player.isNull("last_name") ? null : player.getString("last_name");
+							String role = player.isNull("role") ? null : player.getString("role");
+							
+							players.add(new Player(slug, nationality, firstname, lastname, role));
+						}
+
+						team.setPlayers(players);
+					}
 				}
 			}
 		}

@@ -53,7 +53,7 @@ public class MessageReaction extends ListenerAdapter {
 
 					t.removeReaction("⬅", e.getUser()).queue();
 					if (page > 1) {
-						t.editMessage(Embeds.sendEmbed(gi, gi.getLang(), game, newpage).build()).queue();
+						t.editMessage(Embeds.sendEmbed(gi, e.getChannel(),  gi.getLang(), game, newpage, null, null).getEb().build()).queue();
 					}
 
 				}
@@ -64,7 +64,7 @@ public class MessageReaction extends ListenerAdapter {
 
 					t.removeReaction("🔄", e.getUser()).queue();
 
-					t.editMessage(Embeds.sendEmbed(gi, gi.getLang(), game, newpage).build()).queue();
+					t.editMessage(Embeds.sendEmbed(gi, e.getChannel(), gi.getLang(), game, newpage, null, null).getEb().build()).queue();
 
 				}
 				else if (e.getReactionEmote().getEmoji().equals("➡")) {
@@ -74,7 +74,7 @@ public class MessageReaction extends ListenerAdapter {
 					t.removeReaction("➡", e.getUser()).queue();
 
 					if (page < Match.getMatches(game).size() / 10) {
-						t.editMessage(Embeds.sendEmbed(gi, gi.getLang(), game, newpage).build()).queue();
+						t.editMessage(Embeds.sendEmbed(gi, e.getChannel(), gi.getLang(), game, newpage, null, null).getEb().build()).queue();
 					}
 				} 
 			} else if (e.getReactionEmote().isEmote()) {
@@ -87,7 +87,7 @@ public class MessageReaction extends ListenerAdapter {
 						t.removeReaction(reaction).queue();
 						t.removeReaction(reaction, e.getUser()).queue();
 						t.addReaction(game.getReaction()).queue();
-						t.editMessage(Embeds.sendEmbed(gi, gi.getLang(), Game.getByReaction(reaction), 0).build()).queue();
+						t.editMessage(Embeds.sendEmbed(gi, e.getChannel(), gi.getLang(), Game.getByReaction(reaction), 0, null, null).getEb().build()).queue();
 						break;
 					}
 				}

@@ -12,8 +12,18 @@
 			"inline": false
 		},
 		{
-			"title": "mt.csgo/lol/dota2/codmw/pubg/ow/rl/r6/fifa",
-			"description": "` Ver partidas profissionais por jogo (mt.game)`",
+			"title": "mt.jogo",
+			"description": "` Ver partidas profissionais por jogo (altere jogo) `",
+			"inline": false
+		},
+		{
+			"title": "mt.jogo time <time>",
+			"description": "` Ver partidas profissionais por time (altere jogo)`",
+			"inline": false
+		},
+		{
+			"title": "mt.jogo liga <liga>",
+			"description": "` Ver partidas profissionais por liga (altere jogo)`",
 			"inline": false
 		},
 		{
