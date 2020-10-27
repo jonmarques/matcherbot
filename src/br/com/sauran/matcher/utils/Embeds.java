@@ -101,7 +101,7 @@ public class Embeds {
 					String role = p.getRole() == null ? "" : p.getRole() + " ┃ ";
 					String flag = p.getLocation() == null ? ":pirate_flag:" : ":flag_" + p.getLocation().toLowerCase() + ":";
 					String firstname = p.getFirstname() == null ? "" : " " + p.getFirstname() + " ";
-					String lastname = p.getLastname() == null ? "" : " " + p.getLastname() + "\n";
+					String lastname = p.getLastname() == null ? "\n" : " " + p.getLastname() + "\n";
 
 					int add = 0;
 					
