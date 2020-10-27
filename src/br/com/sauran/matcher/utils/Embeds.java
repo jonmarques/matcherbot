@@ -83,28 +83,28 @@ public class Embeds {
 		} else {
 			description.append(lang.matches_embed_legend + "\n \n");
 		}
-		
+
 		if (t != null) {
-			
+
 			if (t.getPlayers() != null && !t.getPlayers().isEmpty()) {
-				
+
 				TreeMap<Integer, String> linhas = new TreeMap<Integer, String>();
-				
+
 				int i1 = 0;
 				int i2 = 0;
 				int i3 = 0;
 				int i4 = 0;
 				int i5 = 0;
-				
+
 				for (Player p : t.getPlayers()) {
-					
+
 					String role = p.getRole() == null ? "" : p.getRole() + " ┃ ";
 					String flag = p.getLocation() == null ? ":pirate_flag:" : ":flag_" + p.getLocation().toLowerCase() + ":";
 					String firstname = p.getFirstname() == null ? "" : " " + p.getFirstname() + " ";
 					String lastname = p.getLastname() == null ? "\n" : " " + p.getLastname() + "\n";
 
 					int add = 0;
-					
+
 					if (p.getRole() != null && game == Game.LOL) {
 						if (p.getRole().equalsIgnoreCase("top")) {
 							role = "<:top:770307504088940564> ┃ ";
@@ -126,20 +126,48 @@ public class Embeds {
 							role = "<:support:770307253969485907> ┃ ";
 							add = 40 + i5++;
 						}
-						
+
+						linhas.put(add, role + flag + " " + firstname + "**\"" + p.getSlug() + "\"**" + lastname);
+					} else if (p.getRole() != null && game == Game.DOTA2) {
+						if (p.getRole().equalsIgnoreCase("1")) {
+							role = "1 ┃ ";
+							add = i1++;
+						}
+						else if (p.getRole().equalsIgnoreCase("2")) {
+							role = "2 ┃ ";
+							add = 10 + i2++;
+						}
+						else if (p.getRole().equalsIgnoreCase("3")) {
+							role = "3 ┃ ";
+							add = 20 + i3++;
+						}
+						else if (p.getRole().equalsIgnoreCase("4")) {
+							role = "4 ┃ ";
+							add = 30 + i4++;
+						}
+						else if (p.getRole().equalsIgnoreCase("5")) {
+							role = "5 ┃ ";
+							add = 40 + i5++;
+						}
+
 						linhas.put(add, role + flag + " " + firstname + "**\"" + p.getSlug() + "\"**" + lastname);
 					} else {
 						int linha = linhas.isEmpty() ? 0 : linhas.lastKey() + 1;
 						linhas.put(linha, role + flag + " " + firstname + "**\"" + p.getSlug() + "\"**" + lastname);
 					}
 				}
-				
+
 				for (String s : linhas.values()) {
 					description.append(s);
 				}
 			}
 			description.append(" \n");
-			embed.setThumbnail(t.getImage());
+
+			if (t.getImage() == null || t.getImage().isEmpty()) {
+				embed.setThumbnail(game.getLogo());
+			} else {
+				embed.setThumbnail(t.getImage());
+			}
 
 		} else {
 			embed.setThumbnail(game.getLogo());
