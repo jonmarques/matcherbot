@@ -75,10 +75,10 @@ public class Matcher {
 
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true)
-		.setOAuthConsumerKey("okhBNEHXgvi4lSKn0GfZQRmSv")
-		.setOAuthConsumerSecret("pMPuKYpBh3nliX1JVeHLv4I6TRcTdhXDvJdfoxr6F5rT86LZdw")
-		.setOAuthAccessToken("1284301152142741506-sruy7d6IlXa1TNvLRa8tbfP3Gh4YNq")
-		.setOAuthAccessTokenSecret("nGQ0SO0MxMXZNuUill9ykyn8ujer4q5PmHLyzryBtNI0s");
+		.setOAuthConsumerKey("")
+		.setOAuthConsumerSecret("")
+		.setOAuthAccessToken("")
+		.setOAuthAccessTokenSecret("");
 		TwitterFactory tf = new TwitterFactory(cb.build());
 		twitter = tf.getInstance();
 
