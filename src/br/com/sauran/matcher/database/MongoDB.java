@@ -29,7 +29,7 @@ public class MongoDB {
 	}
 
 	private void openConnection() {
-		mongoClient = MongoClients.create("mongodb+srv://matcherbot:Jojo7014@matchercluster.vhbqi.mongodb.net/matcherdb?retryWrites=true&w=majority");
+		mongoClient = MongoClients.create("MONGODB LINK");
 		database = mongoClient.getDatabase("matcherdb");
 		collection = database.getCollection("guilds");
 
