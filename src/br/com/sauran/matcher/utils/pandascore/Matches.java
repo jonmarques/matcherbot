@@ -65,7 +65,7 @@ public class Matches {
 
 		for (Game jogo : Game.values()) {
 
-			String jsonString = JSON.json("https://api.pandascore.co/" + jogo.getInitials() + "/matches?token=UKqyEwch9sYtzSBsMKFsbgw-mYtTPTREqkbGKAt_IW-ulRC_oL4&per_page=100&range[begin_at]=" + formatterJson.format(dateNow.getTime()) + "T00:00:00Z," + formatterJson.format(dateNextDay.getTime()) + "T23:59:00Z&sort=begin_at");
+			String jsonString = JSON.json("https://api.pandascore.co/" + jogo.getInitials() + "/matches?token=TOKEN&per_page=100&range[begin_at]=" + formatterJson.format(dateNow.getTime()) + "T00:00:00Z," + formatterJson.format(dateNextDay.getTime()) + "T23:59:00Z&sort=begin_at");
 
 			if (jsonString != null) {
 				JSONArray json = new JSONArray(jsonString);
@@ -162,7 +162,7 @@ public class Matches {
 				}
 				sb.delete(sb.length() - 1, sb.length());
 
-				String jsonString = JSON.json("https://api.pandascore.co/teams?token=_8uyH4WssbAoaBOUbY1VxBa6fdzHh2J80TAa8z5OhqHUF6ivNyQ&per_page=100&filter[id]=" + sb.toString());
+				String jsonString = JSON.json("https://api.pandascore.co/teams?TOKEN&per_page=100&filter[id]=" + sb.toString());
 
 				if (jsonString != null) {
 
